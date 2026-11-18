@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> GradeMate</title>
+    </head>
+<body>
+    <header class="main-header">
+    <h1>GradeMate</h1>
+    <p>Student Grade Calculator for Cavite State University Students</p>
+  </header>
+
+  <div class="calculator-card">
+    <h2>Subject Grade Calculator</h2>
+    <p class="subtitle">Add your subjects, grades (1.00 - 5.00), and units below</p>
+
+    <div class="grid-header">
+      <span>Subject Name</span>
+      <span>Grade</span>
+      <span>Units</span>
+      <span></span>
+    </div>
+
+    <form id="gradeForm">
+      <div id="subjectList">
+        <div class="row">
+          <input type="text" placeholder="Computer Programming" required>
+          <input type="number" class="grade" placeholder="1.50" min="1.00" max="5.00" step="0.25" required>
+          <input type="number" class="weight" placeholder="3" min="0" step="0.5" required>
+          <button type="button" class="btn-remove" onclick="removeRow(this)" title="Remove subject">×</button>
+        </div>
+
+        <div class="row">
+          <input type="text" placeholder="Ethics" required>
+          <input type="number" class="grade" placeholder="1.25" min="1.00" max="5.00" step="0.25" required>
+          <input type="number" class="weight" placeholder="3" min="0" step="0.5" required>
+          <button type="button" class="btn-remove" onclick="removeRow(this)" title="Remove subject">×</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-add" onclick="addSubject()">+ Add Another Subject</button>
+
+      <div class="btn-group">
+        <button type="submit" class="btn-calc">Calculate GWA</button>
+        <button type="button" class="btn-reset" onclick="resetForm()">Clear</button>
+      </div>
+    </form>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-score" id="finalScore">0.00</div>
+      <div class="result-note" id="gradeNote">Total Units: 0</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
