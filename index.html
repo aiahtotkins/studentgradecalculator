@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Maem Mich!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="b.css" />
+</head>
+<body>
+
+  <!-- Floating Ambient Particles -->
+  <div id="ambient-particles" class="ambient-particles" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Main Container -->
+  <main class="container">
+    <!-- Top Header -->
+    <header class="header">
+      <div class="badge">✨ just a lil bday gift for u hehe ✨</div>
+     <h1 class="main-title">
+  Happy Birthday, <span id="display-name" class="script-accent">Maem Mich</span>!
+</h1>
+      <p class="subtitle">make a wish and blow out the candles, then open the envelope below ^^</p>
+    </header>
+
+    <!-- Interactive Centerpiece Stage -->
+    <section class="stage">
+      
+      <!-- Left / Top: Interactive Birthday Cake -->
+      <div class="card-panel cake-panel">
+        <div class="panel-label"> make a wish</div>
+        
+        <div class="cake-stage" id="cake-stage">
+          <!-- Wish Granted Banner -->
+          <div class="wish-banner" id="wish-banner">
+             yay! may all your wishes come true!
+          </div>
+
+          <div class="cake">
+            <!-- Candles Row -->
+            <div class="candles" id="candles-container">
+              <div class="candle" data-index="0">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle" data-index="1">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle" data-index="2">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle" data-i  ndex="3">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle" data-index="4">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+            </div>
+
+            <!-- Top Cake Tier -->
+            <div class="tier tier-top">
+              <div class="frosting-top">
+                <div class="drip d1"></div>
+                <div class="drip d2"></div>
+                <div class="drip d3"></div>
+                <div class="drip d4"></div>
+                <div class="drip d5"></div>
+              </div>
+              <div class="berries">
+                <span class="berry">🍓</span>
+                <span class="berry">🍒</span>
+                <span class="berry">🍓</span>
+              </div>
+              <div class="sprinkles">
+                <span class="sp s1"></span>
+                <span class="sp s2"></span>
+                <span class="sp s3"></span>
+                <span class="sp s4"></span>
+                <span class="sp s5"></span>
+              </div>
+            </div>
+
+            <!-- Bottom Cake Tier -->
+            <div class="tier tier-bottom">
+              <div class="frosting-bottom">
+                <div class="drip b1"></div>
+                <div class="drip b2"></div>
+                <div class="drip b3"></div>
+                <div class="drip b4"></div>
+                <div class="drip b5"></div>
+                <div class="drip b6"></div>
+                <div class="drip b7"></div>
+              </div>
+              <div class="ribbon-band">
+                <div class="bow">🎀</div>
+              </div>
+              <div class="pearl-border">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <!-- Rose-Gold Cake Stand -->
+            <div class="cake-plate"></div>
+            <div class="cake-pedestal"></div>
+            <div class="cake-base"></div>
+          </div>
+        </div>
+
+        <!-- Cake Action Controls -->
+        <div class="controls">
+          <button id="blow-btn" class="btn btn-primary">
+            🌬️ Blow Out Candles
+          </button>
+          <button id="mic-btn" class="btn btn-soft" title="Blow into your device microphone!">
+            🎤 Use Mic
+          </button>
+          <button id="relight-btn" class="btn btn-outline hidden">
+            🕯️ Relight
+          </button>
+        </div>
+        <p class="helper-hint" id="candle-hint">click the candles or blow them out!</p>
+      </div>
+
+      <!-- Right / Bottom: Interactive Envelope & Letter -->
+      <div class="card-panel envelope-panel">
+        <div class="panel-label">hmmm??</div>
+
+        <div class="envelope-stage">
+          <div class="envelope-wrapper" id="envelope-wrapper" role="button" tabindex="0" aria-label="Open birthday envelope">
+            <div class="envelope">
+              <!-- Back of Envelope -->
+              <div class="env-back"></div>
+
+              <!-- Preview Letter inside Envelope -->
+              <div class="letter-preview">
+                <div class="letter-preview-header">For You ♡</div>
+                <div class="letter-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+
+              <!-- Left, Right, Bottom Flaps -->
+              <div class="env-left"></div>
+              <div class="env-right"></div>
+              <div class="env-bottom"></div>
+
+              <!-- Top Flap -->
+              <div class="env-flap"></div>
+
+              <!-- Wax Heart Seal -->
+              <div class="wax-seal" id="wax-seal">
+                <span>❤</span>
+              </div>
+            </div>
+          </div>
+
+          <button id="open-letter-btn" class="btn btn-primary">
+            💌 tap itttt
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+<!-- Footer Controls -->
+<footer class="footer-bar">
+  <button id="music-btn" class="btn btn-soft">🎵 Play Birthday Tune</button>
+  <div id="yt-player" style="position: absolute; width: 0; height: 0; overflow: hidden;"></div>
+</footer>
+  </main>
+
+  <!-- Full Letter Modal -->
+  <div class="modal-backdrop hidden" id="letter-modal" aria-hidden="true">
+    <div class="letter-card">
+      <button class="close-btn" id="close-letter-btn" aria-label="Close letter">✕</button>
+      <div class="letter-ornament">🌸 ✨ 🌸</div>
+      <h2 class="letter-greeting" id="letter-greeting">Dearest Maem Mich,</h2>
+      <div class="letter-body" id="letter-body">
+        <p> happy happy birthdaaay, maem mich!! wishing you a day full of love and happiness. may this chapter of your life be filled with soft mornings, endless laughter, sweet surprises, and every dream your heart has been wishing for. please always remember that you are one of the wonderful person i've met.</p>
+        <p>May this new chapter of your life be filled with soft mornings, endless laughter, sweet surprises, and every dream your heart has been wishing for.</p>
+        <p>Thank you for bringing so much warmth and light into the world just by being you. Here’s to making unforgettable memories this year!</p>
+      </div>
+      <div class="letter-signoff">
+        <p>With all my love,</p>
+        <p class="signature" id="letter-sender">Your Secret Admirer ♡</p>
+      </div>
+      <div class="letter-actions">
+        <button id="celebrate-more-btn" class="btn btn-primary">🎊 Shower with Confetti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personalize Modal -->
+  <div class="modal-backdrop hidden" id="customize-modal" aria-hidden="true">
+    <div class="customize-card">
+      <button class="close-btn" id="close-customize-btn" aria-label="Close customization">✕</button>
+      <h2 class="modal-title">✨ Personalize This Gift</h2>
+      <p class="modal-desc">Customize the name and message, then copy your unique link to send to them!</p>
+      
+      <form id="customize-form">
+        <div class="form-group">
+          <label for="input-name">Recipient's Name</label>
+          <input type="text" id="input-name" placeholder="e.g., Sophia" maxlength="30" />
+        </div>
+
+        <div class="form-group">
+          <label for="input-message">Birthday Letter Message</label>
+          <textarea id="input-message" rows="5" placeholder="Write your heartfelt birthday wishes here..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-sender">From (Your Name)</label>
+          <input type="text" id="input-sender" placeholder="e.g., With love, Alex" maxlength="40" />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">💖 Save Changes</button>
+          <button type="button" id="modal-copy-link-btn" class="btn btn-soft">🔗 Save & Copy Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Link copied to clipboard! 💌</div>
+
+  <script>
+    // State & Default Content
+    const defaultData = {
+      name: "Maem Mich",
+      message: "Happy, happy birthday! Today is all about celebrating the wonderful, kind, and radiant person you are.\n\nMay this new chapter of your life be filled with soft mornings, endless laughter, sweet surprises, and every dream your heart has been wishing for.\n\nThank you for bringing so much warmth and light into the world just by being you. Here’s to making unforgettable memories this year!",
+      sender: "juju ♡"
+    };
+
+    let giftData = { ...defaultData };
+    let candlesBlown = 0;
+    const totalCandles = 5;
+    let isEnvelopeOpen = false;
+    let audioCtx = null;
+    let isPlayingMusic = false;
+    let musicTimeout = null;
+    let micStream = null;
+    let micInterval = null;
+
+    // DOM Elements
+    const displayNameEl = document.getElementById("display-name");
+    const letterGreetingEl = document.getElementById("letter-greeting");
+    const letterBodyEl = document.getElementById("letter-body");
+    const letterSenderEl = document.getElementById("letter-sender");
+
+    const candles = document.querySelectorAll(".candle");
+    const blowBtn = document.getElementById("blow-btn");
+    const micBtn = document.getElementById("mic-btn");
+    const relightBtn = document.getElementById("relight-btn");
+    const wishBanner = document.getElementById("wish-banner");
+    const candleHint = document.getElementById("candle-hint");
+
+    const envelopeWrapper = document.getElementById("envelope-wrapper");
+    const openLetterBtn = document.getElementById("open-letter-btn");
+    const letterModal = document.getElementById("letter-modal");
+    const closeLetterBtn = document.getElementById("close-letter-btn");
+    const celebrateMoreBtn = document.getElementById("celebrate-more-btn");
+
+    const customizeBtn = document.getElementById("customize-btn");
+    const customizeModal = document.getElementById("customize-modal");
+    const closeCustomizeBtn = document.getElementById("close-customize-btn");
+    const customizeForm = document.getElementById("customize-form");
+    const inputName = document.getElementById("input-name");
+    const inputMessage = document.getElementById("input-message");
+    const inputSender = document.getElementById("input-sender");
+    const modalCopyLinkBtn = document.getElementById("modal-copy-link-btn");
+
+    const musicBtn = document.getElementById("music-btn");
+    const shareBtn = document.getElementById("share-btn");
+    const toastEl = document.getElementById("toast");
+
+    // Initialize from URL Parameters
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("to")) giftData.name = params.get("to");
+      if (params.get("msg")) giftData.message = params.get("msg");
+      if (params.get("from")) giftData.sender = params.get("from");
+      renderGiftData();
+    }
+
+    function renderGiftData() {
+      displayNameEl.textContent = giftData.name;
+      letterGreetingEl.textContent = `Dearest ${giftData.name},`;
+      
+      // Render paragraphs safely
+      letterBodyEl.innerHTML = "";
+      giftData.message.split(/\n+/).forEach(para => {
+        if (para.trim()) {
+          const p = document.createElement("p");
+          p.textContent = para.trim();
+          letterBodyEl.appendChild(p);
+        }
+      });
+
+      letterSenderEl.textContent = giftData.sender;
+
+      // Sync form inputs
+      inputName.value = giftData.name;
+      inputMessage.value = giftData.message;
+      inputSender.value = giftData.sender;
+    }
+
+    // Create Floating Ambient Hearts & Sparkles
+    function createAmbientParticles() {
+      const container = document.getElementById("ambient-particles");
+      const symbols = ["♡", "✨", "🌸", "💕", "⋆"];
+      for (let i = 0; i < 24; i++) {
+        const span = document.createElement("span");
+        span.className = "particle";
+        span.textContent = symbols[i % symbols.length];
+        span.style.left = `${Math.random() * 100}%`;
+        span.style.animationDuration = `${8 + Math.random() * 10}s`;
+        span.style.animationDelay = `${Math.random() * 8}s`;
+        span.style.fontSize = `${12 + Math.random() * 14}px`;
+        container.appendChild(span);
+      }
+    }
+
+    // Candle Interactions
+    function extinguishCandle(candle) {
+      if (candle.classList.contains("out")) return;
+      candle.classList.add("out");
+      candlesBlown++;
+
+      if (candlesBlown === totalCandles) {
+        onAllCandlesOut();
+      }
+    }
+
+    function blowAllCandles() {
+      candles.forEach((c, idx) => {
+        setTimeout(() => extinguishCandle(c), idx * 120);
+      });
+    }
+
+    function relightCandles() {
+      candles.forEach(c => c.classList.remove("out"));
+      candlesBlown = 0;
+      wishBanner.classList.remove("show");
+      blowBtn.classList.remove("hidden");
+      relightBtn.classList.add("hidden");
+      candleHint.textContent = "Tip: Click individual candles or use the button to blow them out!";
+    }
+
+    function onAllCandlesOut() {
+      wishBanner.classList.add("show");
+      blowBtn.classList.add("hidden");
+      relightBtn.classList.remove("hidden");
+      candleHint.textContent = "your wish has been sent to the stars! ✨";
+      launchConfetti(140);
+      if (!isPlayingMusic) {
+        playBirthdayTune();
+      }
+    }
+
+    candles.forEach(candle => {
+      candle.addEventListener("click", () => extinguishCandle(candle));
+    });
+
+    blowBtn.addEventListener("click", blowAllCandles);
+    relightBtn.addEventListener("click", relightCandles);
+
+    // Microphone Blow Detection
+    micBtn.addEventListener("click", async () => {
+      if (micStream) {
+        stopMic();
+        return;
+      }
+      try {
+        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const context = new (window.AudioContext || window.webkitAudioContext)();
+        const source = context.createMediaStreamSource(micStream);
+        const analyser = context.createAnalyser();
+        analyser.fftSize = 256;
+        source.connect(analyser);
+
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        micBtn.textContent = "🎙️ Listening... Blow now!";
+        micBtn.classList.add("listening");
+
+        micInterval = setInterval(() => {
+          analyser.getByteFrequencyData(dataArray);
+          const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+          if (avg > 48) {
+            blowAllCandles();
+            stopMic();
+          }
+        }, 100);
+      } catch (err) {
+        showToast("Microphone access denied or unavailable 🎤");
+      }
+    });
+
+    function stopMic() {
+      if (micInterval) clearInterval(micInterval);
+      if (micStream) {
+        micStream.getTracks().forEach(t => t.stop());
+        micStream = null;
+      }
+      micBtn.textContent = "🎤 Use Mic";
+      micBtn.classList.remove("listening");
+    }
+
+    // Envelope & Letter Interactions
+    function openEnvelopeAndLetter() {
+      if (!isEnvelopeOpen) {
+        isEnvelopeOpen = true;
+        envelopeWrapper.classList.add("open");
+        openLetterBtn.textContent = "📖 Read Full Letter";
+        setTimeout(() => {
+          letterModal.classList.remove("hidden");
+          launchConfetti(70);
+        }, 650);
+      } else {
+        letterModal.classList.remove("hidden");
+      }
+    }
+
+    envelopeWrapper.addEventListener("click", openEnvelopeAndLetter);
+    envelopeWrapper.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openEnvelopeAndLetter();
+      }
+    });
+    openLetterBtn.addEventListener("click", openEnvelopeAndLetter);
+
+    closeLetterBtn.addEventListener("click", () => {
+      letterModal.classList.add("hidden");
+    });
+
+    letterModal.addEventListener("click", (e) => {
+      if (e.target === letterModal) letterModal.classList.add("hidden");
+    });
+
+    celebrateMoreBtn.addEventListener("click", () => {
+      launchConfetti(160);
+    });
+
+    // Personalize Modal Logic
+    customizeBtn.addEventListener("click", () => {
+      customizeModal.classList.remove("hidden");
+    });
+
+    closeCustomizeBtn.addEventListener("click", () => {
+      customizeModal.classList.add("hidden");
+    });
+
+    customizeModal.addEventListener("click", (e) => {
+      if (e.target === customizeModal) customizeModal.classList.add("hidden");
+    });
+
+    function applyCustomization() {
+      giftData.name = inputName.value.trim() || defaultData.name;
+      giftData.message = inputMessage.value.trim() || defaultData.message;
+      giftData.sender = inputSender.value.trim() || defaultData.sender;
+      renderGiftData();
+      updateURLWithoutReload();
+    }
+
+    customizeForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      applyCustomization();
+      customizeModal.classList.add("hidden");
+      showToast("Gift personalized! 💖");
+    });
+
+    modalCopyLinkBtn.addEventListener("click", () => {
+      applyCustomization();
+      copyShareLink();
+      customizeModal.classList.add("hidden");
+    });
+
+    function updateURLWithoutReload() {
+      const url = new URL(window.location.href);
+      url.searchParams.set("to", giftData.name);
+      url.searchParams.set("msg", giftData.message);
+      url.searchParams.set("from", giftData.sender);
+      window.history.replaceState({}, "", url);
+    }
+
+    function copyShareLink() {
+      updateURLWithoutReload();
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast("Personalized gift link copied! 💌");
+      }).catch(() => {
+        showToast("Copy the URL from your browser bar to share! 🔗");
+      });
+    }
+
+    shareBtn.addEventListener("click", copyShareLink);
+
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      setTimeout(() => toastEl.classList.remove("show"), 3000);
+    }
+
+    const bgSong = document.getElementById("bg-song");
+
+    function playBirthdayTune() {
+      if (isPlayingMusic) {
+      stopMusic();
+      return;
+  }
+  
+      bgSong.play().then(() => {
+        isPlayingMusic = true;
+        musicBtn.textContent = "⏸️ Pause Song";
+      }).catch((err) => {
+        showToast("Click play again to start the music! 🎵");
+      });
+    }
+
+    function stopMusic() {
+      bgSong.pause();
+      isPlayingMusic = false;
+      musicBtn.textContent = "🎵 Play Song";
+    }
+
+musicBtn.addEventListener("click", playBirthdayTune);
+
+      const notes = [
+        [261.63, 0.35], [261.63, 0.15], [293.66, 0.5], [261.63, 0.5], [349.23, 0.5], [329.63, 0.9],
+        [261.63, 0.35], [261.63, 0.15], [293.66, 0.5], [261.63, 0.5], [392.00, 0.5], [349.23, 0.9],
+        [261.63, 0.35], [261.63, 0.15], [523.25, 0.5], [440.00, 0.5], [349.23, 0.5], [329.63, 0.5], [293.66, 0.9],
+        [466.16, 0.35], [466.16, 0.15], [440.00, 0.5], [349.23, 0.5], [392.00, 0.5], [349.23, 1.0]
+      ];
+
+      let time = audioCtx.currentTime + 0.05;
+      let totalDuration = 0;
+
+      notes.forEach(([freq, dur]) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, time);
+
+        gain.gain.setValueAtTime(0.001, time);
+        gain.gain.exponentialRampToValueAtTime(0.14, time + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + dur * 0.95);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(time);
+        osc.stop(time + dur);
+
+        time += dur;
+        totalDuration += dur;
+      });
+
+      musicTimeout = setTimeout(() => {
+        stopMusic();
+      }, totalDuration * 1000);
+      
+
+    function stopMusic() {
+      isPlayingMusic = false;
+      musicBtn.textContent = "🎵 Play Birthday Tune";
+      if (musicTimeout) clearTimeout(musicTimeout);
+      if (audioCtx) {
+        audioCtx.close();
+        audioCtx = null;
+      }
+    }
+
+    musicBtn.addEventListener("click", playBirthdayTune);
+
+    // Confetti Canvas Engine
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
+    let confettiPieces = [];
+    let animationFrameId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti(count = 100) {
+      const colors = ["#ff5c8a", "#ff8fab", "#ffc2d1", "#ffd166", "#f4a261", "#ffffff", "#e0aaff"];
+      for (let i = 0; i < count; i++) {
+        confettiPieces.push({
+          x: Math.random() * canvas.width,
+          y: -20 - Math.random() * 120,
+          w: 7 + Math.random() * 7,
+          h: 4 + Math.random() * 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: 2.5 + Math.random() * 4,
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 8
+        });
+      }
+      if (!animationFrameId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach((p, index) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.vRot;
+        p.vy += 0.04; // gravity
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+
+        if (p.y > canvas.height + 30) {
+          confettiPieces.splice(index, 1);
+        }
+      });
+
+      if (confettiPieces.length > 0) {
+        animationFrameId = requestAnimationFrame(animateConfetti);
+      } else {
+        animationFrameId = null;
+      }
+    }
+
+    // Boot
+    createAmbientParticles();
+    loadFromURL();
+  </script>
+</body>
+</html>
