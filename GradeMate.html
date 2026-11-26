@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> GradeMate</title>
+    </head>
+
+<body>
+    <header class="main-header">
+      <div class="header-top-strip"></div>
+      <div class="header-main-bar">
+        <img src="cvsulogo.png" alt="Cavite State University Logo" class="header-logo">
+        <div class="header-text">
+         <h1>GradeMate</h1>
+         <p>Student Grade Calculator for Cavite State University Students</p>
+        </div>
+      </div>
+</header>
+
+  <div class="auth-card" id="authCard">
+        <h2 id="authTitle">Create CvSU Account</h2>
+        <p class="auth-subtitle" id="authSubtitle">Register first using your CvSU email</p>
+
+        <p id="authError" class="error-msg"></p>
+        <p id="authSuccess" class="success-msg"></p>
+
+        <form id="authForm">
+            <div id="nameGroup" style="display: block;">
+                <input type="text" id="studentName" placeholder="Name (e.g., Juan)" required>
+            </div>
+
+            <input type="email" id="cvsuEmail" placeholder="CvSU Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <button type="submit" class="btn-calc" id="authSubmitBtn" style="width: 100%; margin-top: 10px;">Register</button>
+        </form>
+        <p class="auth-toggle">
+              <span id="toggleText">Already have an account?</span>
+              <a href="#" id="toggleAuthLink" onclick="toggleAuthMode(event)">Log in</a>
+            </p>
+        
+        <p class="auth-toggle" id="forgotPasswordRow" style="display: none; margin-top: 8px;">
+          <a href="#" id="forgotPasswordLink" onclick="toggleResetMode(event)">Forgot password?</a>
+        </p>
+
+        <div id="resetPasswordBox" style="display: none; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-color);">
+          <p style="font-size: 0.85rem; margin-bottom: 8px;">Enter your registered CvSU email and a new password:</p>
+          <input type="email" id="resetEmail" placeholder="Registered CvSU Email" style="margin-bottom: 8px;">
+          <input type="password" id="resetNewPassword" placeholder="New Password" style="margin-bottom: 8px;">
+          <button type="button" class="btn-calc" style="width: 100%;" onclick="handleResetPassword()">Update Password</button>
+          <p class="auth-toggle" style="margin-top: 8px;">
+            <a href="#" onclick="cancelResetMode(event)">Back to Log in</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="calculator-card" id="calculatorCard" style="display: none;">
+
+        <form id="gradeForm">
+          <div id="subjectList">
+            <div class="row-labels">
+              <span>Subject</span>
+              <span>Grade</span>
+              <span>Unit</span>
+              <span class="spacer"></span>
+            </div>
+        <div class="row">
+          <input type="text" placeholder="Computer Programming" required>
+          <input type="number" class="grade" placeholder="1.50" min="1.00" max="5.00" step="0.25" required>
+          <input type="number" class="weight" placeholder="3" min="0" step="0.5" required>
+          <button type="button" class="btn-remove" onclick="removeRow(this)" title="Remove subject">×</button>
+        </div>
+
+        <div class="row">
+          <input type="text" placeholder="Ethics" required>
+          <input type="number" class="grade" placeholder="1.25" min="1.00" max="5.00" step="0.25" required>
+          <input type="number" class="weight" placeholder="3" min="0" step="0.5" required>
+          <button type="button" class="btn-remove" onclick="removeRow(this)" title="Remove subject">×</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-add" onclick="addSubject()">+ Add Another Subject</button>
+
+      <div class="btn-group">
+        <button type="submit" class="btn-calc">Calculate GWA</button>
+        <button type="button" class="btn-reset" onclick="resetForm()">Clear</button>
+      </div>
+        </form>
+
+        <div class="result-box" id="resultBox">
+           <div class="result-score" id="finalScore">0.00</div>
+      <div class="result-note" id="gradeNote"> Great job! </div>
+        </div>
+    </div>
+
+    <div class="user-bar" id="userBar" style="display: none;">
+      <span id="welcomeText">Welcome, Student!</span>
+      <button type="button" id="logoutBtn" onclick="logoutUser()">Logout</button>
+    </div>
+
+  <script src="script.js"></script>
+
+  <footer class="bottom-banner"></footer>
+</body>
+</html>
